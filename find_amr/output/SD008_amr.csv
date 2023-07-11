@@ -1,0 +1,13 @@
+Contig,Cut_Off,Best_Hit_ARO,Drug Class,Resistance Mechanism,AMR Gene Family
+NODE_76_length_9451_cov_103.072287_3,Strict,tet(A),tetracycline antibiotic,antibiotic efflux,major facilitator superfamily (MFS) antibiotic efflux pump
+NODE_76_length_9451_cov_103.072287_6,Strict,dfrA1,diaminopyrimidine antibiotic,antibiotic target replacement,trimethoprim resistant dihydrofolate reductase dfr
+NODE_76_length_9451_cov_103.072287_7,Perfect,qacEdelta1,disinfecting agents and antiseptics,antibiotic efflux,major facilitator superfamily (MFS) antibiotic efflux pump
+NODE_76_length_9451_cov_103.072287_8,Perfect,sul1,sulfonamide antibiotic,antibiotic target replacement,sulfonamide resistant sul
+NODE_80_length_8827_cov_103.304483_8,Perfect,QnrS1,fluoroquinolone antibiotic,antibiotic target protection,quinolone resistance protein (qnr)
+NODE_80_length_8827_cov_103.304483_11,Perfect,TEM-1,monobactam; cephalosporin; penam; penem,antibiotic inactivation,TEM beta-lactamase
+NODE_166_length_4043_cov_5.029367_5,Strict,ErmB,macrolide antibiotic; lincosamide antibiotic; streptogramin antibiotic; streptogramin A antibiotic; streptogramin B antibiotic,antibiotic target alteration,Erm 23S ribosomal RNA methyltransferase
+NODE_174_length_3995_cov_105.251293_4,Perfect,CTX-M-15,cephalosporin; penam,antibiotic inactivation,CTX-M beta-lactamase
+NODE_299_length_2751_cov_126.217988_2,Perfect,OXA-48,carbapenem; cephalosporin; penam,antibiotic inactivation,OXA beta-lactamase
+NODE_361_length_2393_cov_55.970874_2,Perfect,OXA-9,carbapenem; cephalosporin; penam,antibiotic inactivation,OXA beta-lactamase
+NODE_361_length_2393_cov_55.970874_3,Strict,ANT(3'')-IIa,aminoglycoside antibiotic,antibiotic inactivation,ANT(3'')
+NODE_506_length_1859_cov_78.939376_2,Perfect,OXA-1,carbapenem; cephalosporin; penam,antibiotic inactivation,OXA beta-lactamase

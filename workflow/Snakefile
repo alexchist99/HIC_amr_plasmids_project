@@ -1,0 +1,34 @@
+#main file define the order of rules
+
+import os
+print(f"working directory: {os.getcwd()}")
+
+#1) find plasmid contigs in stool samples
+print("rule: plasmid_search.smk")
+include: "rules/plasmid_search.smk"
+
+#2) mapping and normalising hic reads to assemblied wgs reads; 
+#use plasmid contigs to define thersholds of HIC contacts and making graph of MAG-MAG contacts 
+print("rule: get_graph_file.smk")
+include: "rules/get_graph_file.smk"
+
+#3) find antimicrobial resistance genes (AMR genes) in wgs reads
+print("rule: amr_search.smk")
+include: "rules/amr_search.smk"
+
+#3) mapping sputum wgs reads to plasmid stool contigs (SD2 & SD8); get percentage of mapped reads and find amr among them
+print("rule: mapping_to_sputum_samples.smk")
+include: "rules/mapping_to_sputum_samples.smk"
+
+print("rule: sputum_analysis.smk")
+include: "rules/sputum_analysis.smk"
+
+#4) make tree of microbial comunity in stool
+print("rule: get_tree.smk")
+include: "rules/get_tree.smk"
+
+#5) make heatmap of MAG-MAG interaction with respect to AMR genes info (using steps 2 and 3 as input)
+print("rule: make_heatmap_links.smk")
+include: "rules/make_heatmap_links.smk"
+
+print("DONE!")

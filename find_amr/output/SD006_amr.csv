@@ -1,0 +1,19 @@
+Contig,Cut_Off,Best_Hit_ARO,Drug Class,Resistance Mechanism,AMR Gene Family
+NODE_1175_length_9772_cov_2.883359_15,Strict,AAC(3)-IIe,aminoglycoside antibiotic,antibiotic inactivation,AAC(3)
+NODE_1734_length_7613_cov_3.835426_2,Perfect,QnrB1,fluoroquinolone antibiotic,antibiotic target protection,quinolone resistance protein (qnr)
+NODE_1876_length_7183_cov_3.805697_2,Perfect,dfrA14,diaminopyrimidine antibiotic,antibiotic target replacement,trimethoprim resistant dihydrofolate reductase dfr
+NODE_2918_length_5269_cov_2.581875_3,Strict,dfrA1,diaminopyrimidine antibiotic,antibiotic target replacement,trimethoprim resistant dihydrofolate reductase dfr
+NODE_2918_length_5269_cov_2.581875_4,Perfect,SAT-2,nucleoside antibiotic,antibiotic inactivation,streptothricin acetyltransferase (SAT)
+NODE_2918_length_5269_cov_2.581875_5,Strict,ANT(3'')-IIa,aminoglycoside antibiotic,antibiotic inactivation,ANT(3'')
+NODE_3418_length_4708_cov_2.034490_3,Strict,tet(B),tetracycline antibiotic,antibiotic efflux,major facilitator superfamily (MFS) antibiotic efflux pump
+NODE_4048_length_4180_cov_4.980508_3,Perfect,CTX-M-15,cephalosporin; penam,antibiotic inactivation,CTX-M beta-lactamase
+NODE_5342_length_3350_cov_5.772882_2,Strict,qacG,disinfecting agents and antiseptics,antibiotic efflux,small multidrug resistance (SMR) antibiotic efflux pump
+NODE_5566_length_3235_cov_6.991313_1,Strict,TEM-1,monobactam; cephalosporin; penam; penem,antibiotic inactivation,TEM beta-lactamase
+NODE_5566_length_3235_cov_6.991313_3,Strict,APH(6)-Id,aminoglycoside antibiotic,antibiotic inactivation,APH(6)
+NODE_5566_length_3235_cov_6.991313_4,Strict,APH(3'')-Ib,aminoglycoside antibiotic,antibiotic inactivation,APH(3'')
+NODE_8350_length_2307_cov_3.097248_2,Strict,mdtP,nucleoside antibiotic; disinfecting agents and antiseptics,antibiotic efflux,major facilitator superfamily (MFS) antibiotic efflux pump
+NODE_11226_length_1788_cov_3.057797_1,Perfect,arr-3,rifamycin antibiotic,antibiotic inactivation,rifampin ADP-ribosyltransferase (Arr)
+NODE_11226_length_1788_cov_3.057797_2,Perfect,catB3,phenicol antibiotic,antibiotic inactivation,chloramphenicol acetyltransferase (CAT)
+NODE_14197_length_1438_cov_1.952708_2,Strict,SCO-1,cephalosporin; penam; penem,antibiotic inactivation,SCO beta-lactamase
+NODE_15968_length_1287_cov_2.593966_1,Strict,APH(3')-Ia,aminoglycoside antibiotic,antibiotic inactivation,APH(3')
+NODE_3418_length_4708_cov_2.034490_4,Strict,tetR,tetracycline antibiotic,antibiotic target alteration; antibiotic efflux,major facilitator superfamily (MFS) antibiotic efflux pump

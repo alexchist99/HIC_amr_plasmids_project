@@ -1,0 +1,10 @@
+Contig,Cut_Off,Best_Hit_ARO,Drug Class,Resistance Mechanism,AMR Gene Family
+NODE_118_length_7894_cov_10.517574_1,Perfect,vanR gene in vanA cluster,glycopeptide antibiotic,antibiotic target alteration,glycopeptide resistance gene cluster; vanR
+NODE_118_length_7894_cov_10.517574_2,Strict,vanS gene in vanA cluster,glycopeptide antibiotic,antibiotic target alteration,vanS; glycopeptide resistance gene cluster
+NODE_118_length_7894_cov_10.517574_4,Perfect,vanH gene in vanA cluster,glycopeptide antibiotic,antibiotic target alteration,vanH; glycopeptide resistance gene cluster
+NODE_118_length_7894_cov_10.517574_5,Strict,vanA,glycopeptide antibiotic,antibiotic target alteration,glycopeptide resistance gene cluster; Van ligase
+NODE_118_length_7894_cov_10.517574_6,Strict,vanX gene in vanA cluster,glycopeptide antibiotic,antibiotic target alteration,vanX; glycopeptide resistance gene cluster
+NODE_118_length_7894_cov_10.517574_7,Strict,vanY gene in vanA cluster,glycopeptide antibiotic,antibiotic target alteration,vanY; glycopeptide resistance gene cluster
+NODE_681_length_2683_cov_2.691706_2,Perfect,APH(3')-IIIa,aminoglycoside antibiotic,antibiotic inactivation,APH(3')
+NODE_681_length_2683_cov_2.691706_3,Strict,SAT-4,nucleoside antibiotic,antibiotic inactivation,streptothricin acetyltransferase (SAT)
+NODE_2375_length_1185_cov_4.366730_1,Perfect,vanZ gene in vanA cluster,glycopeptide antibiotic,antibiotic target alteration,vanZ; glycopeptide resistance gene cluster
