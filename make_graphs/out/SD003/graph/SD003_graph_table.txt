@@ -1,0 +1,5 @@
+NODE_121_length_17069_cov_7.545449	1	2.74353603663251	False	plasmid	Plasmid	17069	Nope	Nope	Plamid_contig	Enterococcus_faecalis	99.53	0.0	f__Enterococcaceae	g__Enterococcus
+NODE_69_length_62280_cov_13.908838	1	9.13167703225391	False	plasmid	Plasmid	62280	rep_cluster_180	mobilizable	Plasmid_full_assembly	Enterococcus_faecalis	99.53	0.0	f__Enterococcaceae	g__Enterococcus
+NODE_800_length_3587_cov_6.387572	1	1.15831176198474	False	plasmid	Uncertain_-_plasmid_or_chromosomal	3587	Nope	Nope	Plamid_contig	Enterococcus_faecium	99.53	0.0	f__Enterococcaceae	g__Enterococcus
+NODE_384_length_5564_cov_6.936914	1	1.0425908999957	False	plasmid	Uncertain_-_plasmid_or_chromosomal	5564	Nope	Nope	Plamid_contig	Enterococcus_faecium	99.53	0.0	f__Enterococcaceae	g__Enterococcus
+NODE_1306_length_2620_cov_4.967910	1	1.02052355247657	False	plasmid	Uncertain_-_plasmid_or_chromosomal	2620	Nope	Nope	Plamid_contig	Enterococcus_faecium	99.53	0.0	f__Enterococcaceae	g__Enterococcus

@@ -1,0 +1,7 @@
+NODE_69_length_62280_cov_13.908838	plasmid	Plasmid	62280	rep_cluster_180	mobilizable	Plasmid_full_assembly	Enterococcus_faecalis
+NODE_121_length_17069_cov_7.545449	plasmid	Plasmid	17069	Nope	Nope	Plamid_contig	Enterococcus_faecalis
+NODE_384_length_5564_cov_6.936914	plasmid	Uncertain_-_plasmid_or_chromosomal	5564	Nope	Nope	Plamid_contig	Enterococcus_faecium
+NODE_704_length_3881_cov_2.014651	plasmid	Plasmid	3881	Nope	Nope	Plamid_contig	Parabacteroides_distasonis
+NODE_800_length_3587_cov_6.387572	plasmid	Uncertain_-_plasmid_or_chromosomal	3587	Nope	Nope	Plamid_contig	Enterococcus_faecium
+NODE_1306_length_2620_cov_4.967910	plasmid	Uncertain_-_plasmid_or_chromosomal	2620	Nope	Nope	Plamid_contig	Enterococcus_faecium
+NODE_10807_length_434_cov_0.912052	-	Uncertain_-_plasmid_or_chromosomal	434	Nope	Nope	Plamid_contig	Azospirillum_oryzae
