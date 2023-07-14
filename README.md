@@ -19,12 +19,13 @@ cd ..
 ```
 * Make folders with input files (the pathes to source files might be different, so you can edit script):
 ```bash
+cd data/raw_data
+ln -s /store/bioinf/data/own/run_2022_01/SD00*_HiC_R[12].fastq.gz .
+ln -s /store/bioinf/data/own/run_2021_04_filtered/*_HiC_R[12].fastq.gz .
+cd ../..
+
 cd workflow
 bash make_folders.sh 
-#cd data/raw_data
-#ln -s /store/bioinf/data/own/run_2022_01/SD00*_HiC_R[12].fastq.gz .
-#ln -s /store/bioinf/data/own/run_2021_04_filtered/*_HiC_R[12].fastq.gz .
-#cd ../..
 ```
 
 * Rename sputum files to simplify the code:
@@ -32,8 +33,8 @@ bash make_folders.sh
 mv data/raw_data_wgs/B-9782_R[12].fastq.gz data/raw_data_wgs/SD002_B_R[12].fastq.gz
 mv data/raw_data_wgs/B-9817_R[12].fastq.gz data/raw_data_wgs/SD008_B_R[12].fastq.gz
 ```
-* Download tools [Plasflow](https://github.com/smaegol/PlasFlow) and [rgi](https://github.com/arpcard/rgi) into * *tools/* *:
-* Download databases [Pfam 34v.](http://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam34.0/Pfam-A.hmm.gz) and [PLSDB](https://ccb-microbe.cs.uni-saarland.de/plsdb) into * *databases/Pfam/* * and * *databases/PLSDB/* * accordingly 
+* Download tools [Plasflow](https://github.com/smaegol/PlasFlow) and [rgi](https://github.com/arpcard/rgi) into *tools/* :
+* Download databases [Pfam 34v.](http://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam34.0/Pfam-A.hmm.gz) and [PLSDB](https://ccb-microbe.cs.uni-saarland.de/plsdb) into *databases/Pfam/*  and *databases/PLSDB/*  accordingly 
 
 * Then use:
 ```bash
