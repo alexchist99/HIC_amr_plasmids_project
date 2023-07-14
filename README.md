@@ -17,6 +17,16 @@ cd HIC_amr_plasmids_project/envs
 for env in *; do conda env create -f $env; done
 cd ..
 ```
+* Make folders with input files (the pathes to source files might be different, so you can edit script):
+```bash
+cd workflow
+bash make_folders.sh 
+#cd data/raw_data
+#ln -s /store/bioinf/data/own/run_2022_01/SD00*_HiC_R[12].fastq.gz .
+#ln -s /store/bioinf/data/own/run_2021_04_filtered/*_HiC_R[12].fastq.gz .
+#cd ../..
+```
+
 * Rename sputum files to simplify the code:
 ```bash
 mv data/raw_data_wgs/B-9782_R[12].fastq.gz data/raw_data_wgs/SD002_B_R[12].fastq.gz
