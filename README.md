@@ -39,3 +39,7 @@ cd workflow
 conda activate snakemake
 snakemake --use-conda -c10 
 ```
+
+## Workflow:
+
+![alt text](make_graphs/out/SD005/SD005_hist.jpg)
