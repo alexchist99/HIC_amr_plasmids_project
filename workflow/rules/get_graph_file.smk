@@ -7,20 +7,25 @@ files= [os.path.basename(f) for f in glob.glob(f'{path}/*')]
 
 
 
+
 list_files = sorted(list(set([i.split("_")[0] for i in set(files)])))
-#list_files = list_files[-1]
-#print(list_files)
-#"../make_graphs/out/{id}/graph/{id}_graph_table.txt"
+list_files = [list_files[4],list_files[9]]
+#list_files1 = [*list_files[:4],list_files[-1]]
+
+print(list_files)
+
+"../make_graphs/out/{id}/graph/{id}_graph_table.txt"
 rule all2:
     input: expand("../make_graphs/out/{id}/graph/{id}_graph_table.txt", id=list_files)
 
 
 rule spades_metawrap:
-   input:
-        spades_contigs = "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/spades_out/contigs.fasta",
-        metawrap_list = "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/metawrap/metawrap_50_20_bins.contigs"
+   input:  
+            spades_contigs = "../data/spades_contigs_out/{id}_contigs.fasta",
+            metawrap_list = "../data/metawrap/{id}_mtw"  
+            
    output:  
-            marked_spades = "../data/spades_contigs_out/{id}/{id}_replaced.fa",
+            marked_spades = "../data/spades_contigs_out/{id}_replaced.fa",
             genomes = "../make_graphs/out/{id}/genomes/marked_mtw_mags.faa"
    conda:"exp"
    shell:'''
@@ -30,7 +35,7 @@ rule spades_metawrap:
    '''
 
 
-# if there are indexes in ../data/spades_contigs_out/{id}/ then  bamm make -d return ERROR:
+# if there are indexes in ../data/spades_contigs_out/{id}_file then  bamm make -d return ERROR:
 '''
 ERROR:
 You didn't specify that index files have been kept but there appears to be bwa index files present.
@@ -42,7 +47,7 @@ rule hic_mapping:
   input: 
        fastq_r1 = '../data/raw_data/{id}_HiC_R1.fastq.gz',
        fastq_r2 = '../data/raw_data/{id}_HiC_R2.fastq.gz',
-       spades_contigs = '../data/spades_contigs_out/{id}/{id}_replaced.fa'
+       spades_contigs = '../data/spades_contigs_out/{id}_replaced.fa'
   output: 
        link = '../make_graphs/out/{id}/bamm/links.tsv' 
   conda: "for_graphs"
@@ -54,8 +59,9 @@ rule hic_mapping:
 
 rule calculate_coverage:
   input: 
-      link_file = rules.hic_mapping.output.link,
-      depth_info = '/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/depth_metabat.tsv'
+      #link_file = rules.hic_mapping.output.link,
+      link_file  = "../make_graphs/out/{id}/bamm/links.tsv",
+      depth_info = '../data/metabat/{id}_depth_metabat.tsv'
   output: 
        contig_info = '../make_graphs/out/{id}/contig_info.txt'
   conda: 'hicmag_py37'
@@ -67,12 +73,13 @@ rule calculate_coverage:
 
 rule reprocess_counts:
   input:
-      link_file = rules.hic_mapping.output.link
+      link_file = "../make_graphs/out/{id}/bamm/links.tsv"
+      #rules.hic_mapping.output.link
 
   output: 
        links_count_strip = '../make_graphs/out/{id}/links_count_strip.txt',
        links_good_strip = '../make_graphs/out/{id}/links_good_strip.txt'
-  params:"/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/metawrap/metawrap_50_20_bins.stats"
+  params:"../data/metawrap/{id}_mtw_stats"
       
   shell: '''
      cut -f1,2 {input.link_file}| sort | uniq -c > ../make_graphs/out/{wildcards.id}/bamm/links_count.tsv
@@ -105,8 +112,8 @@ rule find_threshold:
           bins_info = rules.spades_metawrap.input.metawrap_list,
           good_file = "../make_graphs/out/{id}/good.csv",
           virv = "../find_plasmids/output/{id}/viral_v/viralverify_{id}.csv",
-          checkm = "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/metawrap/metawrap_50_20_bins.stats",
-          gtdb = "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/metawrap/gtdbtk_out/classify/gtdbtk_sorted.txt"
+          checkm = "../data/metawrap/{id}_mtw_stats",
+          gtdb = "../data/gtdbtk/{id}_gtdbtk_sorted.txt"
      output: 
            pic = "../make_graphs/out/{id}/{id}_hist.jpg",
            bondary = "../make_graphs/out/{id}/fileout.txt"
@@ -119,19 +126,19 @@ rule find_threshold:
       python3 ../scripts/graph_table_retrieving_sp_mtw.py ../data/metawrap/{wildcards.id}_bins_info.txt {input.good_file} ../make_graphs/out/{wildcards.id}/temp_virv.txt ../make_graphs/out/{wildcards.id}/checkm_modified.txt {input.gtdb} ../make_graphs/out/{wildcards.id}/tmp_fileout.txt ../make_graphs/out/{wildcards.id}/temp_virv_graph.txt ../make_graphs/out/{wildcards.id}/temp_bins.txt
       python3 ../scripts/plots_hic_intensity_spades.py ../data/metawrap/{wildcards.id}_bins_info.txt ../make_graphs/out/{wildcards.id}/temp_virv_graph.txt {wildcards.id} {output.pic} {output.bondary} 
 
-      rm ../make_graphs/out/{wildcards.id}/temp_virv.txt
-      rm ../make_graphs/out/{wildcards.id}/tmp_fileout.txt
-      rm ../make_graphs/out/{wildcards.id}/temp_virv_graph.txt
-      rm ../make_graphs/out/{wildcards.id}/temp_bins.txt
+      rm -rf ../make_graphs/out/{wildcards.id}/temp_virv.txt
+      rm -rf ../make_graphs/out/{wildcards.id}/tmp_fileout.txt
+      rm -rf ../make_graphs/out/{wildcards.id}/temp_virv_graph.txt
+      rm -rf ../make_graphs/out/{wildcards.id}/temp_bins.txt
      '''
 
 rule get_graph:
     input: 
-        bins_info = "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/metawrap/metawrap_50_20_bins.contigs",
+        bins_info = "../data/metawrap/{id}_mtw",
         good_file = "../make_graphs/out/{id}/good.csv",
         plasmid_file = "../find_plasmids/output/samples_output/{id}_plasmids.txt",
-        checkm = "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/metawrap/metawrap_50_20_bins.stats",
-        gtdb = "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/metawrap/gtdbtk_out/classify/gtdbtk_sorted.txt",
+        checkm = "../data/metawrap/{id}_mtw_stats",
+        gtdb = "../data/gtdbtk/{id}_gtdbtk_sorted.txt",
         thr = rules.find_threshold.output.bondary
     output: 
          graph = "../make_graphs/out/{id}/graph/{id}_graph_table.txt",

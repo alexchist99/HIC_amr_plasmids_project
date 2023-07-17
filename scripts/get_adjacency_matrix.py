@@ -29,8 +29,8 @@ def connections_retrieving(fl_name,sample,dir_way,thr):
    for n in dct:
       #check if the plasmid contig source is between at least one fitted host (eg.: Klebsiella`s contig - Klebsiella MAG)
       complement = any("g__"+taxa.split("_")[0] in dct[n] for taxa in dct_to_compare[n])
-      print(dct_to_compare[n])
-      print(complement)
+      #print(dct_to_compare[n])
+      #print(complement)
 
       if len(dct[n])>1:
           var = list(permutations(set(dct[n]), 2))

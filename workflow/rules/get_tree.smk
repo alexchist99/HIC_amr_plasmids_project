@@ -10,8 +10,7 @@ path="/home/alexclear/HIC_amr_plasmids_project/data/raw_data"
 files= [os.path.basename(f) for f in glob.glob(f'{path}/*')]
 
 list_files = sorted(list(set([i.split("_")[0] for i in set(files)])))
-#print(list_files)
-
+print(list_files)
 
 
 rule all6:
@@ -21,14 +20,16 @@ rule all6:
 rule get_good_MAGS:
     output: "a.txt"
     conda:"exp"
-    shell:''' 
-#mkdir ../make_tree/input_pangenome
+    shell:'''
+set -e
+mkdir -p ../make_tree/input_pangenome
+
 for i in {list_files}
 do 
 while read -r line
 do
 grep -w $line ../make_graphs/out/$i/genomes/marked_mtw_mags.faa|cut -f2- -d">" > ../make_tree/${{i}}_temp_file
-NAME=$(cat /store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/${{i}}/metawrap/gtdbtk_out/classify/gtdbtk_sorted.txt|awk -F";" '{{for(j=1; j<=NF-1; ++j) printf "%s ", $j; print ""}}'|awk '{{print $1"\t"$NF}}'|grep -w $line|cut -f2|awk -F "__" '{{print $2}}')
+NAME=$(cat ../data/gtdbtk/${{i}}_gtdbtk_sorted.txt|awk -F";" '{{for(j=1; j<=NF-1; ++j) printf "%s ", $j; print ""}}'|awk '{{print $1"\t"$NF}}'|grep -w $line|cut -f2|awk -F "__" '{{print $2}}')
 seqtk subseq ../make_graphs/out/${{i}}/genomes/marked_mtw_mags.faa ../make_tree/${{i}}_temp_file > ../make_tree/input_pangenome/${{NAME}}.fna
 rm ../make_tree/${{i}}_temp_file
 

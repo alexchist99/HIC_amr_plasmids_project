@@ -1,5 +1,0 @@
-Contig,Cut_Off,Best_Hit_ARO,Drug Class,Resistance Mechanism,AMR Gene Family
-NODE_121_length_17069_cov_7.545449_8,Perfect,APH(3')-IIIa,aminoglycoside antibiotic,antibiotic inactivation,APH(3')
-NODE_121_length_17069_cov_7.545449_9,Strict,SAT-4,nucleoside antibiotic,antibiotic inactivation,streptothricin acetyltransferase (SAT)
-NODE_121_length_17069_cov_7.545449_10,Strict,aad(6),aminoglycoside antibiotic,antibiotic inactivation,ANT(6)
-NODE_121_length_17069_cov_7.545449_16,Strict,ErmB,macrolide antibiotic; lincosamide antibiotic; streptogramin antibiotic; streptogramin A antibiotic; streptogramin B antibiotic,antibiotic target alteration,Erm 23S ribosomal RNA methyltransferase

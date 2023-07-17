@@ -28,10 +28,11 @@ print(f"samples: {list_files}")
 
 rule all1:
     input: expand("../find_plasmids/output/samples_output/{id}_plasmids.txt", id=list_files)
+    #input: expand("../find_plasmids/output/{id}/viral_v/viralverify_{id}.csv",id=list_files)
 
 
 rule Plasflow:
-    input: "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/spades_out/contigs.fasta"
+    input: "../data/spades_contigs_out/{id}_contigs.fasta"
     output: "../find_plasmids/output/{id}/plsflow_out/plasflow_predictions_{id}.tsv"
     conda:"plasflow"
     shell: '''
@@ -39,7 +40,7 @@ rule Plasflow:
     '''
 
 rule Mob_T:
-    input: "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/spades_out/contigs.fasta"
+    input: "../data/spades_contigs_out/{id}_contigs.fasta"
     output: "../find_plasmids/output/{id}/mobt_out/MOB_TYP_{id}.txt"
     conda:"mobsuite"
     shell: '''
@@ -49,7 +50,7 @@ rule Mob_T:
 
 
 rule Mob_R:
-    input: "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/spades_out/contigs.fasta"
+    input: "../data/spades_contigs_out/{id}_contigs.fasta"
     output: "../find_plasmids/output/{id}/mobr_out/MOB_REC_{id}.txt"
     conda:"mobsuite"
     shell: '''
@@ -58,17 +59,17 @@ rule Mob_R:
     '''
 
 rule Virv:
-    input: "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/spades_out/contigs.fasta"
+    input: "../data/spades_contigs_out/{id}_contigs.fasta"
     output: "../find_plasmids/output/{id}/viral_v/viralverify_{id}.csv"
     conda:"viralverify"
     shell: '''
-    viralverify -f {input} --hmm ../databases/Pfam/Pfam-A.hmm -o ../find_plasmids/output/{wildcards.id}/viral_v -t 40
-    cat ../find_plasmids/output/{wildcards.id}/viral_v/contigs_result_table.csv|awk -F"," '{{print $1","$2","$3","$4}}'> {output}
+    #viralverify -f {input} --hmm ../databases/Pfam/Pfam-A.hmm -o ../find_plasmids/output/{wildcards.id}/viral_v -t 40
+    cat ../find_plasmids/output/{wildcards.id}/viral_v/{wildcards.id}_contigs_result_table.csv|awk -F"," '{{print $1","$2","$3","$4}}'> {output}
     '''
 
 
 rule NCBI:
-    input: "/store/bioinf/analysis/hicmicrobiome/run_2022_01/SDD_2022/{id}/spades_out/contigs.fasta"
+    input: "../data/spades_contigs_out/{id}_contigs.fasta"
     output: "../find_plasmids/output/{id}/NCBI/PLSDB_{id}.txt"
     conda:"hicmag_py37"
     shell: '''

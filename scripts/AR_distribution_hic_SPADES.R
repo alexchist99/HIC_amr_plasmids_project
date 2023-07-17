@@ -43,18 +43,20 @@ rep_tree <- read.tree(sample_tree)
 #first take that contacts where plasmid contig (according to ncbi annotation) has its host (MAG) - in case of avoiding spurious contatcs
 #and find false positive amr genes
 #but keep the initial number of hosts as in the tree:
-taxa_list = table(c(dt$from,dt$to))
+
+# taxa_list = table(c(dt$from,dt$to))
 
 
-rare = names(taxa_list[taxa_list<250])
+# rare = names(taxa_list[taxa_list<160])
+# print(taxa_list)
 
-dt$prevalent = ifelse((dt$from %in% rare | dt$to %in% rare),"no","yes")
+# dt$prevalent = ifelse((dt$from %in% rare | dt$to %in% rare),"no","yes")
 
-dt1 <- dt %>% filter(dt$compliment=="yes") 
+# dt1 <- dt %>% filter(dt$compliment=="yes") 
 
-dt2 <- dt %>% filter(dt$prevalent=="no" & dt$compliment=="no") 
+# dt2 <- dt %>% filter(dt$prevalent=="no" & dt$compliment=="no") 
 
-dt <- rbind(dt1,dt2)
+# dt <- rbind(dt1,dt2)
 
 
 
@@ -139,6 +141,8 @@ rep_tree<- root(rep_tree,
                    outgroup="Methanobrevibacter_A")
 
 
+
+
 #can’t have any branch lengths of zero or downstream commands will collapse those nodes…
 rep_tree$edge.length[which(rep_tree$edge.length == 0)] <- 0.00001
 rep_tree_um <- chronopl(rep_tree,
@@ -150,7 +154,17 @@ rep_tree_d <- as.dendrogram(as.hclust.phylo(rep_tree_um))
 ##HEATMAPS WITH TREE
 #make the heatmap symmetric regarding to the tree topology
 #some tips have not the same order as in the tree - change it:
-tree_tips1 = c(tree_tips[3:length(tree_tips)],rev(tree_tips[1:2]))
+
+tree_tips1 = c(tree_tips[1:8],tree_tips[21:24],tree_tips[9:13],tree_tips[15:20],tree_tips[14])
+
+#tree_tips[15:19],tree_tips[9:13],tree_tips[19:20],tree_tips[14])
+# print(sort(tree_tips)[!sort(tree_tips)==sort(colnames(m))])
+# print(sort(tree_tips)==sort(colnames(m)))
+
+# print(sort(tree_tips))
+# print(sort(colnames(m)))
+
+print(tree_tips)
 print(tree_tips1)
 
 m <- m[tree_tips,tree_tips1]
